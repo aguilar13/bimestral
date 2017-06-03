@@ -6,6 +6,7 @@
 package org.armando.bimestral;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -16,6 +17,8 @@ import javax.persistence.Id;
 public class Direccion {
     
     @Id
+   // @Column(name="id")
+    @GeneratedValue
     private Long id;
     
     private Integer numero;
