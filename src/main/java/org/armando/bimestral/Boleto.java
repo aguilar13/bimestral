@@ -5,46 +5,72 @@
  */
 package org.armando.bimestral;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author T-
  */
+@Entity
+@Table(name="boleto")
 public class Boleto {
     
-    private Integer id_boleto;
-    private Integer id_sala;
-    private Float CostoBoleto;
+    @Id
+    @GeneratedValue
+    @Column(name="sid_boleto")
+    private Long id;
+    
+    @ManyToOne
+    @JoinColumn(name="id_sala")        
+    private SalaCine sala;
 
-    public Boleto(Integer id_boleto, Integer id_sala, Float CostoBoleto) {
-        this.id_boleto = id_boleto;
-        this.id_sala = id_sala;
-        this.CostoBoleto = CostoBoleto;
+    @Override
+    public String toString() {
+        return "Boleto{" + "id=" + id + ", sala=" + sala + ", costo=" + costo + '}';
     }
 
     public Boleto() {
     }
 
-    public Integer getId_boleto() {
-        return id_boleto;
+    public Boleto(SalaCine sala, Float costo) {
+        this.sala = sala;
+        this.costo = costo;
+    }
+    
+    @Column(name="costo_boleto")
+    private Float costo;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setId_boleto(Integer id_boleto) {
-        this.id_boleto = id_boleto;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Integer getId_sala() {
-        return id_sala;
+    public SalaCine getSala() {
+        return sala;
     }
 
-    public void setId_sala(Integer id_sala) {
-        this.id_sala = id_sala;
+    public void setSala(SalaCine sala) {
+        this.sala = sala;
     }
 
-    public Float getCostoBoleto() {
-        return CostoBoleto;
+    public Float getCosto() {
+        return costo;
     }
 
-    public void setCostoBoleto(Float CostoBoleto) {
-        this.CostoBoleto = CostoBoleto;
+    public void setCosto(Float costo) {
+        this.costo = costo;
     }
+    
+    
+    
+   
 }

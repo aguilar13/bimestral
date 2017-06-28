@@ -5,40 +5,57 @@
  */
 package org.armando.bimestral;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import static jdk.nashorn.internal.runtime.Debug.id;
+
 /**
  *
  * @author T-
  */
+@Entity
+@Table(name="salacine")
 public class SalaCine {
-    private Integer id_sala;
-    private String titulopelicula;
-    private String clasificacion;
-    private Integer num_asientos;
+    @Id
+    @Column(name="id_sala")
+    private Long id;
 
-    public SalaCine(Integer id_sala, String titulopelicula, String clasificacion, Integer num_asientos) {
-        this.id_sala = id_sala;
-        this.titulopelicula = titulopelicula;
-        this.clasificacion = clasificacion;
-        this.num_asientos = num_asientos;
+    @Override
+    public String toString() {
+        return "SalaCine{" + "id=" + id + ", titulo=" + titulo + ", clasificacion=" + clasificacion + ", asientos=" + asientos + '}';
     }
 
     public SalaCine() {
     }
 
-    public Integer getId_sala() {
-        return id_sala;
+    public SalaCine(String titulo, String clasificacion, Integer asientos) {
+        this.titulo = titulo;
+        this.clasificacion = clasificacion;
+        this.asientos = asientos;
+    }
+    @Column (name="titulo_pelicula")
+    private String titulo;
+    @Column(name="clasificacion")
+    private String clasificacion;
+    @Column (name="mum_asientos")
+    private Integer asientos;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setId_sala(Integer id_sala) {
-        this.id_sala = id_sala;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getTitulopelicula() {
-        return titulopelicula;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setTitulopelicula(String titulopelicula) {
-        this.titulopelicula = titulopelicula;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getClasificacion() {
@@ -49,12 +66,12 @@ public class SalaCine {
         this.clasificacion = clasificacion;
     }
 
-    public Integer getNum_asientos() {
-        return num_asientos;
+    public Integer getAsientos() {
+        return asientos;
     }
 
-    public void setNum_asientos(Integer num_asientos) {
-        this.num_asientos = num_asientos;
+    public void setAsientos(Integer asientos) {
+        this.asientos = asientos;
     }
-    
+
 }
