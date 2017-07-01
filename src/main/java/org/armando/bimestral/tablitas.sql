@@ -18,3 +18,7 @@ create table boleto(id_boleto integer primary key auto_increment,sid_sala intege
 
 describe sala_cine;
 describe boleto;
+
+create table cliente(id_cliente integer primary key auto_increment,nombre varchar(80));
+
+create table tarjetas(id_tarjetas integer primary key,id_cliente integer,tipo varchar(40),saldo float,Fecha_corte Date,foreign key (id_cliente) references cliente(id_cliente));
